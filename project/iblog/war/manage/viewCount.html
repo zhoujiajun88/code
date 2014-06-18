@@ -1,0 +1,16 @@
+<script>
+	function showViewCount() {
+		$.ajax({
+			type : 'POST',
+			url : 'showCount.json',
+			dataType : 'json',
+			success : function(data) {
+				$('#viewCount').text(data.count);
+			}
+		});
+	}
+	$(document).ready(function() {
+		showViewCount();
+	});
+</script>
+<div id="viewCount"></div>

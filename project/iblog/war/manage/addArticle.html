@@ -1,0 +1,124 @@
+<script>
+	var editor1;
+	var editor2;
+	var key = "";
+
+	//关闭窗体
+	function closeAddArticle() {
+		$('#window_A1A2').closest('div.window').hide();
+		$('#icon_dock_A1A2').hide('fast');
+	}
+
+	$(function() {
+		//初始化KindEditor
+		editor1 = KindEditor.create('textarea[name="content"]', {
+			resizeType : 1,
+			allowPreviewEmoticons : false,
+			allowImageUpload : false,
+			items : [ 'fontname', 'fontsize', 'lineheight', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+					'insertunorderedlist', '|', 'emoticons', 'image', 'flash', 'insertfile', 'map', 'media', 'link', 'anchor', '|', 'source', 'preview', 'code', '|', 'removeformat', 'clearhtml',
+					'table', 'template' ]
+		});
+		editor2 = KindEditor.create('textarea[name="description"]', {
+			resizeType : 1,
+			allowPreviewEmoticons : false,
+			allowImageUpload : false,
+			items : [ 'bold', 'italic', 'underline', 'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist', 'insertunorderedlist', '|', 'emoticons', 'link',
+					'source', 'code' ]
+		});
+
+		//获得文章key
+		key = $.cookie("articleKey");
+		$.cookie("articleKey", "");
+
+		//如果是编辑文章，执行查询并填入指定区域
+		//如果是新增文章则跳过
+		if (key != null && key != "") {
+			$('#title').val('博文加载中。。。');
+			$.ajax({
+				type : 'POST',
+				url : 'getArticleByKey.json',
+				data : {
+					key : key
+				},
+				dataType : 'JSON',
+				success : function(data) {
+					var status = data.status;
+					if (status == true) {
+						$.each(data.article, function(i, n) {
+							$('#title').val(n['articleTitle']);
+							editor2.html(n['articleDescription']);
+							editor1.html(n['articleContent']);
+							$('#staticURL').val(n['articleStaticURL']);
+							$('#tags').val(n['articleTags']);
+							$('#btn_OK').val('修改');
+							$('#btn_OK').attr('disabled', false);
+						});
+					} else {//获得要编辑的文章失败
+						showTip('错误提示', data.errorcode);
+						$('#btn_OK').val('修改');
+						$('#btn_OK').attr('disabled', true);
+					}
+				}
+			});
+		} else {//新插入文章 
+			$('#btn_OK').val('发布');
+			$('#btn_OK').attr('disabled', false);
+		}
+
+		//注册发布/修改按钮事件
+		$('#btn_OK').click(function() {
+			$.ajax({
+				type : 'POST',
+				url : 'postArticle.json',
+				data : {
+					key : key,
+					title : $('#title').val(),
+					description : editor2.html(),
+					content : editor1.html(),
+					staticURL : $('#staticURL').val(),
+					tags : $('#tags').val()
+				},
+				dataType : 'JSON',
+				success : function(data) {
+					var status = data.status;
+					if (status == true) {
+						showDialog('操作提示', data.description, closeAddArticle, '');
+					} else {
+						showTip('错误提示', data.errorcode);
+					}
+				}
+			});
+		});
+	});
+</script>
+<form action="/manage/postArticle" method="post">
+	<table>
+		<tr>
+			<td>标题：</td>
+			<td><input type="text" name="title" style="width: 695px;" id="title" /></td>
+		</tr>
+
+		<tr>
+			<td>描述：</td>
+			<td><textarea name="description" style="width: 700px; height: 100px;" id="description"></textarea></td>
+		</tr>
+
+		<tr>
+			<td>内容：<br>
+			</td>
+			<td><textarea name="content" style="width: 700px; height: 400px;" id="content"></textarea></td>
+		</tr>
+
+		<tr>
+			<td>URL：</td>
+			<td><input type="text" name="staticURL" style="width: 695px;" id="staticURL" /></td>
+		</tr>
+
+		<tr>
+			<td>标签：</td>
+			<td><input type="text" name="tags" style="width: 695px;" id="tags" /></td>
+		</tr>
+	</table>
+	<input type="button" id="btn_OK" />
+</form>

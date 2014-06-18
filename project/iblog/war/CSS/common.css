@@ -1,0 +1,352 @@
+@charset "utf-8";
+/*----------网页主体----------*/
+* {
+	padding: 0;
+	margin: 0;
+}
+
+/*-----选择颜色------*/
+::selection {
+    background:#b2d3ff; 
+    color:#555;
+}
+
+::-moz-selection {
+    background:#b2d3ff; 
+    color:#555;
+}
+
+::-webkit-selection {
+    background:#b2d3ff; 
+    color:#555;
+}
+
+a:link {
+	text-decoration: none;
+	color: #000;
+}
+
+a:visited {
+	text-decoration: none;
+	color: #000;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: #000;
+}
+
+a:active {
+	text-decoration: none;
+}
+
+body {
+	font-family: "Microsoft YaHei", 微软雅黑, "Heiti SC", 黑体;
+	font-size: 12pt;
+	text-align: left;
+	min-width: 650px;
+}
+
+/*----------网页主体框架部件----------*/
+/*banner*/
+body>header {
+	width: 100%;
+	height: 100px;
+	top: 0px;
+	position: fixed;
+	background-color: #000000;
+	opacity: 0.75;
+	z-index: 100;
+}
+
+/*文章主体部分*/
+body>section {
+	width: auto;
+	min-height: 400px;
+	margin-right: 290px;
+	margin-left: 30px;
+	margin-top: 105px;
+	padding-left: 5px;
+	padding-right: 5px;
+	opacity: 0.95;
+}
+/*微博评论框*/
+#comment {
+	/* width: auto;
+	min-height: 400px; */
+	margin-right: 290px;
+	margin-left: 30px;
+	margin-top: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	opacity: 0.95;
+	border-top-style: solid;
+	border-color: #cccccc;
+}
+/*右边栏*/
+body>aside {
+	width: 250px;
+	float: right;
+	min-height: 500px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+/*网站主版权信息*/
+body>footer {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-right: 20px;
+	margin-left: 20px;
+	text-align: center;
+	border-top-style: solid;
+	border-top-color: #cccccc;
+	font-size: 10pt;
+	clear: both;
+}
+
+body>footer img {
+	border: 0;
+}
+/*----------banner区域----------*/
+/*banner大标题*/
+body>header>hgroup>h1 {
+	color: white;
+	font-size: 20pt;
+	margin-top: 10px;
+}
+/*banner小标题*/
+body>header>hgroup>h2 {
+	color: #a1a1a1;
+	font-size: 14pt;
+	margin-top: 5px;
+	float: left;
+}
+/*banner的右侧功能区域*/
+body>header>hgroup>div {
+	margin-right: 20px;
+	color: #ffffff;
+	float: right;
+	font-size: 10px;
+}
+/*banner文字边距*/
+body>header>hgroup {
+	padding-left: 30px;
+	padding-top: 5px;
+}
+/*----------文章列表区域----------*/
+body>section>article {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-top: 5px;
+	padding-left: 5px;
+	padding-bottom: 5px;
+	padding-right: 5px;
+	background-color: #ffffff;
+	box-shadow: 1px 1px 1px #cccccc;
+	border: solid 1px #cccccc;
+	cursor: pointer;
+}
+/*文章标题的链接*/
+body>section>article>header>h1 a {
+	text-decoration: none;
+	color: #333333;
+}
+/*----------翻页按钮----------*/
+body>section>section>a {
+	background: #ffffff;
+	border: solid 1px #cccccc;
+	box-shadow: 1px 1px 1px #cccccc;
+	text-decoration: none;
+	color: #888888;
+	text-decoration: none;
+	margin: 5px 5px 5px 5px;
+}
+
+body>section>section>a:hover {
+	color: #000000;
+}
+
+body>section>section>span {
+	border: solid 1px #cccccc;
+	box-shadow: 1px 1px 1px #cccccc;
+	text-decoration: none;
+	color: #000000;
+	margin: 5px 5px 5px 5px;
+}
+/*----------边栏区域----------*/
+/*导航*/
+body>aside>nav {
+	list-style-image: url(../images/nav_li.png);
+	line-height: 25px;
+	width: 250px;
+}
+
+body>aside>nav a:link {
+	text-decoration: none;
+	color: #000;
+}
+
+body>aside>nav a:visited {
+	text-decoration: none;
+	color: #000;
+}
+
+body>aside>nav a:hover {
+	text-decoration: underline;
+	color: #000;
+}
+
+body>aside>nav a:active {
+	text-decoration: none;
+}
+
+body>aside>nav li {
+	border: solid 1px #cccccc;
+	box-shadow: 1px 1px 1px #cccccc;
+	text-decoration: none;
+	color: #888888;
+	text-decoration: none;
+	width: 240px;
+	background-color: #ffffff;
+}
+/*模块区域*/
+body>aside section {
+	margin-top: 10px;
+	background-color: white;
+	opacity: 0.95;
+	box-shadow: 1px 1px 1px #cccccc;
+	border: solid 1px #cccccc;
+	margin-right: 7px;
+}
+
+body>aside section span {
+	padding-top: 5px;
+	padding-left: 5px;
+	padding-bottom: 5px;
+	padding-right: 5px;
+}
+/*模块头*/
+body>aside header {
+	color: white;
+	background-color: #000000;
+	opacity: 0.55;
+	min-height: 25px;
+	font-size: 14pt;
+}
+/*----------文章详细内容----------*/
+/*文章详细内容框*/
+body>article {
+	min-height: 480px;
+	margin-top: 105px;
+	margin-left: 35px;
+	margin-bottom: 5px;
+	margin-right: 20px;
+}
+/*文章头部分*/
+body>article>header {
+	text-align: left;
+	padding: 20px 20px 20px 20px;
+	background-color: #FFFFFF;
+	border: 1px solid #cccccc;
+	opacity: 0.95;
+	margin-right: 275px;
+	margin-bottom: 20px;
+	box-shadow: 1px 1px 1px #cccccc;
+}
+/*文章标题*/
+body>article>header>h1 {
+	font-size: 22pt;
+	color: #555555;
+}
+/*文章属性固定文字*/
+body>article>header>time {
+	font-size: 10pt;
+	color: #00123D;
+}
+/*文章属性的可变文字*/
+body>article>header>time>span {
+	color: #888888;
+	padding-left: 2px;
+	padding-right: 20px;
+}
+/*文章内容区域*/
+body>article>section {
+	margin-right: 275px;
+	margin-top: 15px;
+	background-color: #FFFFFF;
+	border: 1px solid #cccccc;
+	overflow: hidden;
+	opacity: 0.95;
+	padding: 20px 20px 20px 20px;
+	box-shadow: 1px 1px 1px #cccccc;
+	min-height: 100px;
+}
+
+/*----------3D标签的样式----------*/
+#tag_cloud {
+	position: relative;
+	width: 230px;
+	height: 200px;
+	margin: 0px auto 0;
+}
+
+#tag_cloud a {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	font-family: Microsoft YaHei;
+	color: #fff;
+	font-weight: bold;
+	text-decoration: none;
+	padding: 3px 6px;
+}
+
+#tag_cloud a:hover {
+	border: 2px solid #666;
+	background: none;
+}
+
+#tag_cloud .blue {
+	color: blue;
+}
+
+#tag_cloud .red {
+	color: red;
+}
+
+#tag_cloud .orange {
+	color: #F90;
+}
+
+#tag_cloud .pink {
+	color: #F6F;
+}
+
+#tag_cloud .black {
+	color: #333;
+}
+
+#tag_cloud .purple {
+	color: #90F;
+}
+
+/*----------友情链接样式----------*/
+#friendly_link a:link {
+	text-decoration: none;
+	color: #000;
+}
+
+#friendly_link a:visited {
+	text-decoration: none;
+	color: #000;
+}
+
+#friendly_link a:hover {
+	text-decoration: underline;
+	color: #000;
+}
+
+#friendly_link a:active {
+	text-decoration: none;
+}

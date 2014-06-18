@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+
+	<security-constraint>
+		<web-resource-collection>
+			<url-pattern>/manage/*</url-pattern>
+			<url-pattern>/WhatNew.txt</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+
+	<servlet-mapping>
+		<servlet-name>GetArticleList</servlet-name>
+		<url-pattern>/manage/getArticleList.json</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetArticleByKey</servlet-name>
+		<url-pattern>/manage/getArticleByKey.json</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PostArticle</servlet-name>
+		<url-pattern>/manage/postArticle.json</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DeleteArticle</servlet-name>
+		<url-pattern>/manage/deleteArticle.json</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>ShowArticle</servlet-name>
+		<url-pattern>/showArticle.json</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ShowTags</servlet-name>
+		<url-pattern>/showTags.json</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ShowArticleDetail</servlet-name>
+		<url-pattern>/showArticleByURL.json</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Article</servlet-name>
+		<url-pattern>/article/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SiteMap</servlet-name>
+		<url-pattern>/sitemap.xml</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>ViewCountJSON</servlet-name>
+		<url-pattern>/viewCount.json</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ShowCountJSON</servlet-name>
+		<url-pattern>/manage/showCount.json</url-pattern>
+	</servlet-mapping>
+
+
+
+	<servlet>
+		<servlet-name>GetArticleList</servlet-name>
+		<servlet-class>com.ixiaozhi.blog.manage.ShowAllArticleJSON</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GetArticleByKey</servlet-name>
+		<servlet-class>com.ixiaozhi.blog.manage.QueryArticleByKeyJSON</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>PostArticle</servlet-name>
+		<servlet-class>com.ixiaozhi.blog.manage.PostArticleJSON</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>DeleteArticle</servlet-name>
+		<servlet-class>com.ixiaozhi.blog.manage.DeleteArticleJSON</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>ShowArticle</servlet-name>
+		<servlet-class>com.ixiaozhi.blog.ShowArticleListJSON</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ShowTags</servlet-name>
+		<servlet-class>com.ixiaozhi.blog.ShowTagsListJSON</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ShowArticleDetail</servlet-name>
+		<servlet-class>com.ixiaozhi.blog.ShowArticleByURLJSON</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Article</servlet-name>
+		<jsp-file>/showArticle.jsp</jsp-file>
+	</servlet>
+	<servlet>
+		<servlet-name>SiteMap</servlet-name>
+		<servlet-class>com.ixiaozhi.seo.SiteMapServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>ViewCountJSON</servlet-name>
+		<servlet-class>com.ixiaozhi.blog.ViewCountJSON</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ShowCountJSON</servlet-name>
+		<servlet-class>com.ixiaozhi.blog.manage.ShowCountJSON</servlet-class>
+	</servlet>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+</web-app>

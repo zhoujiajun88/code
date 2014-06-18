@@ -1,0 +1,3 @@
+User-Agent: *
+Disallow: /manage/
+Sitemap: http://www.ixiaozhi.com/sitemap.xml
