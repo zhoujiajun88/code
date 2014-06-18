@@ -1,0 +1,30 @@
+body {
+    font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "Lucida Grande", "Helvetica Neue", "Helvetica, Arial", "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", "sans-serif";
+}
+
+h1 {
+    line-height: 20px;
+    top: 20px;
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+    bottom: 20px;
+}
+
+#game_2048 {
+    margin: 0 auto;
+    position: relative;
+    border: 0;
+    background-color: #8b807e;
+    z-index: 1;
+}
+
+.numberBox {
+    border: 0;
+    position: absolute;
+    z-index: 2;
+
+    text-align: center;
+}
