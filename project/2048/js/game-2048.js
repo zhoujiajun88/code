@@ -61,29 +61,34 @@ document.addEventListener('touchstart', function (event) {
 });
 
 document.addEventListener('touchend', function (event) {
-    x2 = event.changedTouches[0].pageX;
-    y2 = event.changedTouches[0].pageY;
+    if (new Date().getTime() - pressKeyTime > 600) {
+        x2 = event.changedTouches[0].pageX;
+        y2 = event.changedTouches[0].pageY;
 
-    var x = x2 - x1;
-    var y = y2 - y1;
+        var x = x2 - x1;
+        var y = y2 - y1;
 
-    if (Math.abs(x) < 0.3 * allWidth && Math.abs(y) < 0.3 * allWidth) {
-        return;
-    }
+        if (Math.abs(x) < 0.3 * allWidth && Math.abs(y) < 0.3 * allWidth) {
+            return;
+        }
 
-    if (Math.abs(x) >= Math.abs(y)) {
-        if (x > 0) {
-            pressKey('right');
+        if (Math.abs(x) >= Math.abs(y)) {
+            if (x > 0) {
+                pressKey('right');
+            } else {
+                pressKey('left');
+            }
         } else {
-            pressKey('left');
+            if (y > 0) {
+                pressKey('down');
+            }
+            else {
+                pressKey('up');
+            }
         }
+        pressKeyTime = new Date().getTime();
     } else {
-        if (y > 0) {
-            pressKey('down');
-        }
-        else {
-            pressKey('up');
-        }
+        event.preventDefault();
     }
 });
 document.addEventListener('touchmove', function (event) {
